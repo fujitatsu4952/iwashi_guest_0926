@@ -17,8 +17,8 @@
     "axios": "^0.20.0",
     "graphql": "^15.3.0",
     "graphql-request": "^3.1.0",
-    "nuxt": "^2.14.0",
-    "nuxt-property-decorator": "^2.7.2"
+    "nuxt": "^2.14.6",
+    "nuxt-property-decorator": "^2.8.8"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.17.8",

@@ -1,29 +1,38 @@
 <template>
     <div class="container">
         <div>
-            <h1 class="title">iwashi200915</h1>
-            <button @click="goPlan">プラン作成</button>
-            <button @click="goRoom">ルーム作成</button>
-            <button @click="goPolicy">ポリシー作成</button>
+            <h1 class="title">iwashiGUEST</h1>
+            <div>ルーム一覧</div>
+            <room-list :roomMasts="roomMasts" />
+            <div>プラン一覧</div>
+            <plan-list :planMasts="planMasts" />
+            <div>ポリシー作成</div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from "nuxt-property-decorator";
+import { RoomMast, PlanMast, PolicyMast } from "@/entity/type";
+import PlanMethods from "@/methods/planMethods";
+import RoomMethods from "@/methods/roomMethods";
+
+import PlanList from "@/components/Organisms/Item/Plan/PlanList.vue";
+import RoomList from "@/components/Organisms/Item/Room/RoomList.vue";
 
 @Component({
-    components: {},
+    components: {
+        RoomList,
+        PlanList,
+    },
 })
 export default class BookingPage extends Vue {
-    public goPlan() {
-        this.$router.push({ name: "items-plan" });
-    }
-    public goRoom() {
-        this.$router.push({ name: "items-room" });
-    }
-    public goPolicy() {
-        this.$router.push({ name: "items-policy" });
+    public planMasts: PlanMast[] | null | undefined = null;
+    public roomMasts: RoomMast[] | null | undefined = null;
+
+    public async created() {
+        this.planMasts = await PlanMethods.fetchPlanMasts(undefined);
+        this.roomMasts = await RoomMethods.fetchRoomMasts(undefined);
     }
 }
 </script>

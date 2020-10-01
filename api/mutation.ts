@@ -285,45 +285,6 @@ export type RoomStatusInput = {
   isAvailabe?: Maybe<Scalars['Boolean']>;
 };
 
-export type updatePlanMastMutationVariables = Exact<{
-  planMast?: Maybe<PlanMastInput>;
-}>;
-
-
-export type updatePlanMastMutation = (
-  { __typename?: 'Mutation' }
-  & { updatePlanMast?: Maybe<(
-    { __typename?: 'PlanMast' }
-    & Pick<PlanMast, 'name'>
-  )> }
-);
-
-export type addPlanMastMutationVariables = Exact<{
-  planMast?: Maybe<PlanMastInput>;
-}>;
-
-
-export type addPlanMastMutation = (
-  { __typename?: 'Mutation' }
-  & { addPlanMast?: Maybe<(
-    { __typename?: 'PlanMast' }
-    & Pick<PlanMast, 'name'>
-  )> }
-);
-
-export type fetchPlanMastsQueryVariables = Exact<{
-  planID?: Maybe<Scalars['ID']>;
-}>;
-
-
-export type fetchPlanMastsQuery = (
-  { __typename?: 'Query' }
-  & { fetchPlanMasts: Array<(
-    { __typename?: 'PlanMast' }
-    & Pick<PlanMast, 'planID' | 'name' | 'description' | 'subDescription' | 'price' | 'stockNum' | 'deletedAt' | 'inSale'>
-  )> }
-);
-
 export type updatePolicyMastMutationVariables = Exact<{
   policyMast?: Maybe<PolicyMastInput>;
 }>;
@@ -402,35 +363,46 @@ export type fetchRoomMastsQuery = (
   )> }
 );
 
+export type updatePlanMastMutationVariables = Exact<{
+  planMast?: Maybe<PlanMastInput>;
+}>;
 
-export const updatePlanMastDocument = gql`
-    mutation updatePlanMast($planMast: PlanMastInput) {
-  updatePlanMast(input: $planMast) {
-    name
-  }
-}
-    `;
-export const addPlanMastDocument = gql`
-    mutation addPlanMast($planMast: PlanMastInput) {
-  addPlanMast(input: $planMast) {
-    name
-  }
-}
-    `;
-export const fetchPlanMastsDocument = gql`
-    query fetchPlanMasts($planID: ID) {
-  fetchPlanMasts(planID: $planID) {
-    planID
-    name
-    description
-    subDescription
-    price
-    stockNum
-    deletedAt
-    inSale
-  }
-}
-    `;
+
+export type updatePlanMastMutation = (
+  { __typename?: 'Mutation' }
+  & { updatePlanMast?: Maybe<(
+    { __typename?: 'PlanMast' }
+    & Pick<PlanMast, 'name'>
+  )> }
+);
+
+export type addPlanMastMutationVariables = Exact<{
+  planMast?: Maybe<PlanMastInput>;
+}>;
+
+
+export type addPlanMastMutation = (
+  { __typename?: 'Mutation' }
+  & { addPlanMast?: Maybe<(
+    { __typename?: 'PlanMast' }
+    & Pick<PlanMast, 'name'>
+  )> }
+);
+
+export type fetchPlanMastsQueryVariables = Exact<{
+  planID?: Maybe<Scalars['ID']>;
+}>;
+
+
+export type fetchPlanMastsQuery = (
+  { __typename?: 'Query' }
+  & { fetchPlanMasts: Array<(
+    { __typename?: 'PlanMast' }
+    & Pick<PlanMast, 'planID' | 'name' | 'description' | 'subDescription' | 'price' | 'stockNum' | 'deletedAt' | 'inSale'>
+  )> }
+);
+
+
 export const updatePolicyMastDocument = gql`
     mutation updatePolicyMast($policyMast: PolicyMastInput) {
   updatePolicyMast(input: $policyMast) {
@@ -482,6 +454,34 @@ export const fetchRoomMastsDocument = gql`
   }
 }
     `;
+export const updatePlanMastDocument = gql`
+    mutation updatePlanMast($planMast: PlanMastInput) {
+  updatePlanMast(input: $planMast) {
+    name
+  }
+}
+    `;
+export const addPlanMastDocument = gql`
+    mutation addPlanMast($planMast: PlanMastInput) {
+  addPlanMast(input: $planMast) {
+    name
+  }
+}
+    `;
+export const fetchPlanMastsDocument = gql`
+    query fetchPlanMasts($planID: ID) {
+  fetchPlanMasts(planID: $planID) {
+    planID
+    name
+    description
+    subDescription
+    price
+    stockNum
+    deletedAt
+    inSale
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 
@@ -489,15 +489,6 @@ export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 const defaultWrapper: SdkFunctionWrapper = sdkFunction => sdkFunction();
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    updatePlanMast(variables?: updatePlanMastMutationVariables): Promise<{ data?: updatePlanMastMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
-        return withWrapper(() => client.rawRequest<updatePlanMastMutation>(print(updatePlanMastDocument), variables));
-    },
-    addPlanMast(variables?: addPlanMastMutationVariables): Promise<{ data?: addPlanMastMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
-        return withWrapper(() => client.rawRequest<addPlanMastMutation>(print(addPlanMastDocument), variables));
-    },
-    fetchPlanMasts(variables?: fetchPlanMastsQueryVariables): Promise<{ data?: fetchPlanMastsQuery | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
-        return withWrapper(() => client.rawRequest<fetchPlanMastsQuery>(print(fetchPlanMastsDocument), variables));
-    },
     updatePolicyMast(variables?: updatePolicyMastMutationVariables): Promise<{ data?: updatePolicyMastMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
         return withWrapper(() => client.rawRequest<updatePolicyMastMutation>(print(updatePolicyMastDocument), variables));
     },
@@ -515,6 +506,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     fetchRoomMasts(variables?: fetchRoomMastsQueryVariables): Promise<{ data?: fetchRoomMastsQuery | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
         return withWrapper(() => client.rawRequest<fetchRoomMastsQuery>(print(fetchRoomMastsDocument), variables));
+    },
+    updatePlanMast(variables?: updatePlanMastMutationVariables): Promise<{ data?: updatePlanMastMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<updatePlanMastMutation>(print(updatePlanMastDocument), variables));
+    },
+    addPlanMast(variables?: addPlanMastMutationVariables): Promise<{ data?: addPlanMastMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<addPlanMastMutation>(print(addPlanMastDocument), variables));
+    },
+    fetchPlanMasts(variables?: fetchPlanMastsQueryVariables): Promise<{ data?: fetchPlanMastsQuery | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<fetchPlanMastsQuery>(print(fetchPlanMastsDocument), variables));
     }
   };
 }
