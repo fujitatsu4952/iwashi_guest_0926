@@ -1,0 +1,41 @@
+// PAGES
+// pages/Curation
+$pageCuration {
+    .catchecopy_SP {
+      position: fixed;
+      top: 40px;
+      left: 160px;
+
+        @media only screen and (max-width: 1023px) {
+            position: static;
+            display: block;
+            text-align: center;
+        }
+    }
+    .page_curation_contents {
+        width: 840px;
+        margin: 50px auto;
+        display: flex;
+        justify-content: space-between;
+        @media only screen and (max-width: 1023px) {
+            display: block;
+            width: 100%;
+            margin: 25px 0 0;
+        }
+
+        .page_curation_list {
+            width: 200px;
+            @media only screen and (max-width: 1023px) {
+            width: 100%;
+            }
+        }
+
+        .page_card_list {
+            width: 534px;
+            @media only screen and (max-width: 1023px) {
+            width: 100%;
+            margin: 25px 0 0 0;
+            }
+        }
+    }
+}

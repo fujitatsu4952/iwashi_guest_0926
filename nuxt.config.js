@@ -59,7 +59,8 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
   ],
   /*
    ** Axios module configuration
@@ -74,5 +75,7 @@ export default {
   transpile: [
     'vee-validate/dist/rules',
   ],
-
+  styleResources: {
+    stylus: ['~/assets/stylus/style.styl'],
+  },
 }

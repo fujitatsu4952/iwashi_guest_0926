@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div>
-            <app-button statement="予約をしにいく" @click="goBooking()">
+            <app-button statement="予約をしにいく" @click="goBooking()" />
             <h1 class="title">iwashiGUEST</h1>
             <div>ルーム一覧</div>
             <room-list :roomMasts="roomMasts" />
@@ -18,7 +18,7 @@ import { RoomMast, PlanMast, PolicyMast } from "@/entity/type";
 import PlanMethods from "@/methods/planMethods";
 import RoomMethods from "@/methods/roomMethods";
 // components
-import AppButton from "@/components/Atoms/Button/LargeButton.vue"
+import AppButton from "@/components/Atoms/Button/LargeButton.vue";
 import PlanList from "@/components/Organisms/Item/Plan/PlanList.vue";
 import RoomList from "@/components/Organisms/Item/Room/RoomList.vue";
 
@@ -26,8 +26,8 @@ import RoomList from "@/components/Organisms/Item/Room/RoomList.vue";
     components: {
         AppButton,
         RoomList,
-        PlanList,
-    },
+        PlanList
+    }
 })
 export default class BookingPage extends Vue {
     public planMasts: PlanMast[] | null | undefined = null;
@@ -39,7 +39,7 @@ export default class BookingPage extends Vue {
     }
     public goBooking() {
         this.$router.push({
-            name: "booking",
+            name: "booking"
         });
     }
 }

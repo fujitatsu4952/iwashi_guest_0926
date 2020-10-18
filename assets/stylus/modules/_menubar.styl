@@ -1,0 +1,18 @@
+// pages/Roomリスト && pages/Planリスト
+$menuBar  {
+    .page_menu_bar_no_search_head {
+        position: sticky;
+        top: -2px;
+        z-index: 12;
+        transition: all .8s ; 
+    }
+    .page_menu_bar_with_search_head {
+        position: sticky;
+        top: 109px;
+        z-index: 12;
+        transition: all .7s;
+        @media only screen and (max-width: 1023px) {
+            top: 55px;
+        }
+    }
+}
