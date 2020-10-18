@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <div>
+            <app-button statement="予約をしにいく" @click="goBooking()">
             <h1 class="title">iwashiGUEST</h1>
             <div>ルーム一覧</div>
             <room-list :roomMasts="roomMasts" />
@@ -16,12 +17,14 @@ import { Component, Vue, Watch } from "nuxt-property-decorator";
 import { RoomMast, PlanMast, PolicyMast } from "@/entity/type";
 import PlanMethods from "@/methods/planMethods";
 import RoomMethods from "@/methods/roomMethods";
-
+// components
+import AppButton from "@/components/Atoms/Button/LargeButton.vue"
 import PlanList from "@/components/Organisms/Item/Plan/PlanList.vue";
 import RoomList from "@/components/Organisms/Item/Room/RoomList.vue";
 
 @Component({
     components: {
+        AppButton,
         RoomList,
         PlanList,
     },
@@ -33,6 +36,11 @@ export default class BookingPage extends Vue {
     public async created() {
         this.planMasts = await PlanMethods.fetchPlanMasts(undefined);
         this.roomMasts = await RoomMethods.fetchRoomMasts(undefined);
+    }
+    public goBooking() {
+        this.$router.push({
+            name: "booking",
+        });
     }
 }
 </script>
