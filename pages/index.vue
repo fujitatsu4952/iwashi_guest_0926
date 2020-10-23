@@ -3,11 +3,6 @@
         <div>
             <app-button statement="予約をしにいく" @click="goBooking()" />
             <h1 class="title">iwashiGUEST</h1>
-            <div>ルーム一覧</div>
-            <room-list :roomMasts="roomMasts" />
-            <div>プラン一覧</div>
-            <plan-list :planMasts="planMasts" />
-            <div>ポリシー作成</div>
         </div>
     </div>
 </template>

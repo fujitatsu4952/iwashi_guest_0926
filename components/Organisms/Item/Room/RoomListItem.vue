@@ -1,9 +1,11 @@
 <template>
     <div>
-        <div>{{ roomMast.name }}</div>
-        <div>{{ roomMast.description }}</div>
-        <div>{{ roomMast.subDescription }}</div>
-        <div>{{ roomMast.minOrderNum }}</div>
+        <span>{{ roomMast.roomID }}</span>
+        <span>NAME:{{ roomMast.name }}</span>
+        <span>説明:{{ roomMast.description }}</span>
+        <span>注意書き:{{ roomMast.subDescription }}</span>
+        <span>最低オーダー数:{{ roomMast.minOrderNum }}</span>
+        <span>在庫数:{{ roomMast.stockNum }}</span>
     </div>
 </template>
 
@@ -12,10 +14,14 @@ import { Component, Vue, Watch, Prop } from "nuxt-property-decorator";
 import { RoomMast, PlanMast, PolicyMast } from "@/entity/type";
 
 @Component({
-    components: {},
+    components: {}
 })
 export default class RoomListItem extends Vue {
     @Prop() public roomMast!: RoomMast;
+
+    public getPlan() {
+        console.log(this.roomMast.roomID);
+    }
 }
 </script>
 <style scoped lang="stylus"></style>
