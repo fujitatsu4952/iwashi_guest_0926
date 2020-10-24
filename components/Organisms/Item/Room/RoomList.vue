@@ -8,11 +8,11 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from "nuxt-property-decorator";
-import { RoomMast, PlanMast, PolicyMast } from "@/entity/type";
-
+import { RoomMast } from "iwashi_abr_1023/iwashiabr";
+// components
 import RoomListItem from "./RoomListItem.vue";
 @Component({
-    components: { RoomListItem },
+    components: { RoomListItem }
 })
 export default class RoomList extends Vue {
     @Prop() public roomMasts: RoomMast[] | null | undefined;

@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from "nuxt-property-decorator";
-import { PlanMast, PolicyMast } from "@/entity/type";
+import { PlanMast } from "iwashi_abr_1023/iwashiabr";
 
 @Component({
     components: {}

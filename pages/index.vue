@@ -9,9 +9,6 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from "nuxt-property-decorator";
-import { RoomMast, PlanMast, PolicyMast } from "@/entity/type";
-import PlanMethods from "@/methods/planMethods";
-import RoomMethods from "@/methods/roomMethods";
 // components
 import AppButton from "@/components/Atoms/Button/LargeButton.vue";
 import PlanList from "@/components/Organisms/Item/Plan/PlanList.vue";
@@ -25,13 +22,6 @@ import RoomList from "@/components/Organisms/Item/Room/RoomList.vue";
     }
 })
 export default class BookingPage extends Vue {
-    public planMasts: PlanMast[] | null | undefined = null;
-    public roomMasts: RoomMast[] | null | undefined = null;
-
-    public async created() {
-        this.planMasts = await PlanMethods.fetchPlanMasts(undefined);
-        this.roomMasts = await RoomMethods.fetchRoomMasts(undefined);
-    }
     public goBooking() {
         this.$router.push({
             name: "booking"

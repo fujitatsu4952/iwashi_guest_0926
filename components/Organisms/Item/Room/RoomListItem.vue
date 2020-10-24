@@ -11,17 +11,13 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from "nuxt-property-decorator";
-import { RoomMast, PlanMast, PolicyMast } from "@/entity/type";
+import { RoomMast } from "iwashi_abr_1023/iwashiabr";
 
 @Component({
     components: {}
 })
 export default class RoomListItem extends Vue {
     @Prop() public roomMast!: RoomMast;
-
-    public created() {
-        console.log("ININ");
-    }
 
     public getPlan() {
         console.log(this.roomMast.roomID);
