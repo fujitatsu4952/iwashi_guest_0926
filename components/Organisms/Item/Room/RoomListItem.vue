@@ -19,6 +19,10 @@ import { RoomMast, PlanMast, PolicyMast } from "@/entity/type";
 export default class RoomListItem extends Vue {
     @Prop() public roomMast!: RoomMast;
 
+    public created() {
+        console.log("ININ");
+    }
+
     public getPlan() {
         console.log(this.roomMast.roomID);
     }
