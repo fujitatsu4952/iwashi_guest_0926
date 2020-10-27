@@ -1,13 +1,16 @@
-import { Vue } from 'nuxt-property-decorator';
+import { Vue, Component } from 'nuxt-property-decorator';
 import { ReservationObject, GuestReservationCoordinatorInteractor } from 'iwashi_abr_1023/iwashiabr'
 import { reservationInteractor, coordinator } from "@/abr/index";
 import { reservationStore } from "@/store";
+
+@Component({
+})
 
 export class BookingPageMixin extends Vue {
     public reservationObject: ReservationObject | null = null; 
     public coordinator: GuestReservationCoordinatorInteractor = coordinator;
 
-    public async start() {
+    public async created() {
         coordinator.start();
         if(!this.reservationObjectNow) {
             console.log("既存のがない")
@@ -16,9 +19,8 @@ export class BookingPageMixin extends Vue {
             console.log("既存のがある")
             this.reservationObject = this.reservationObjectNow
         }
-        console.log(6)
+        await reservationStore.reservationStatus(this.reservationObject)
         coordinator.addObserver(this.statusChanger)
-        console.log(this.reservationObject)
     }
 
     public get reservationObjectNow() {
@@ -26,11 +28,9 @@ export class BookingPageMixin extends Vue {
     }
 
     // ================= private =================
-    private async statusChanger() {
-        console.log("エラー直前")
-        console.log(this.coordinator);
-        console.log("ここでエラー")
+    public async statusChanger() {
         await reservationStore.statusSetter(this.coordinator);
-        console.log("ここまで到達しない")
+        console.log("storeで管理されているやつ↓")
+        console.log(this.reservationObjectNow)
     }
 }

@@ -13,7 +13,7 @@ import { Component, Vue, Watch } from "nuxt-property-decorator";
 import { RoomMast, PlanMast, PolicyMast } from "iwashi_abr_1023/iwashiabr";
 import { planInteractor, roomInteractor } from "@/abr/index";
 // mixins
-import { BookingPageMixin } from "@/mixins/bookingMixin";
+// import { BookingPageMixin } from "@/mixins/bookingMixin";
 // components
 import PlanList from "@/components/Organisms/Item/Plan/PlanList.vue";
 import RoomList from "@/components/Organisms/Item/Room/RoomList.vue";
@@ -26,7 +26,7 @@ import AppTitle from "@/components/Atoms/Text/Title.vue";
         AppTitle
     }
 })
-export default class BookingPage extends BookingPageMixin {
+export default class BookingPage extends Vue {
     public planMasts: PlanMast[] | null | undefined = null;
     public roomMasts: RoomMast[] | null | undefined = null;
 

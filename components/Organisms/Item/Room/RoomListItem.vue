@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from "nuxt-property-decorator";
-import { RoomMast } from "iwashi_abr_1023/iwashiabr";
+import { RoomMast, ReservationObject } from "iwashi_abr_1023/iwashiabr";
 import { BookingPageMixin } from "@/mixins/bookingMixin";
 import { coordinator } from "@/abr/index";
 
@@ -21,14 +21,15 @@ import { coordinator } from "@/abr/index";
 export default class RoomListItem extends BookingPageMixin {
     @Prop() public roomMast!: RoomMast;
 
-    public created() {
-        return super.start();
-    }
-
-    public getRoom() {
-        if (this.reservationObject) {
-            this.reservationObject.planID = this.roomMast.roomID;
-            coordinator.updateReservation(this.reservationObject);
+    public async getRoom() {
+        if (this.reservationObjectNow) {
+            console.log("ルーム取得");
+            const reservationObjectTemp: ReservationObject = {
+                ...this.reservationObjectNow,
+                roomID: this.roomMast.roomID
+            };
+            console.log(reservationObjectTemp);
+            await coordinator.updateReservation(reservationObjectTemp);
         }
     }
 }

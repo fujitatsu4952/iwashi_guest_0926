@@ -23,6 +23,11 @@ export default class ReservationModule extends VuexModule {
     }
 
     @Action
+    public async reservationStatus(reservationObject: ReservationObject) {
+        this.RESERVATION_STATUS(reservationObject)
+    }
+
+    @Action
     public resetStore() {
         this.RESET_STORE();
     }
@@ -34,13 +39,16 @@ export default class ReservationModule extends VuexModule {
         try {
             if(input.coordinator) {
                 this.reservationObjectState = JSON.parse(
-                    JSON.stringify(input.coordinator.getReservationObject),
+                    JSON.stringify(input.coordinator.getReservationObject)
                 ) as ReservationObject;
             }
-            console.log(this.getReservationObject)
         } catch (err) {
             this.reservationObjectState = null;
         }
+    }
+    @Mutation
+    private async RESERVATION_STATUS(reservationObject: ReservationObject) {
+        this.reservationObjectState = reservationObject
     }
     @Mutation
     private RESET_STORE() {
