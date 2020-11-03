@@ -3,6 +3,7 @@
         <div>
             <app-button statement="予約をしにいく" @click="goBooking()" />
             <h1 class="title">iwashiGUEST</h1>
+            <app-button statement="ステップ1にいく" @click="goStep1()" />
         </div>
     </div>
 </template>
@@ -25,6 +26,11 @@ export default class BookingPage extends Vue {
     public goBooking() {
         this.$router.push({
             name: "booking"
+        });
+    }
+    public goStep1() {
+        this.$router.push({
+            name: "booking-step1"
         });
     }
 }

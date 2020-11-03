@@ -17,6 +17,7 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "@types/axios": "^0.14.0",
     "axios": "^0.20.0",
+    "dayjs": "^1.9.4",
     "graphql": "^15.3.0",
     "graphql-request": "^3.1.0",
     "iwashi_abr_1023": "git+ssh://git@github.com:fujitatsu4952/iwashi_abr_1023.git",

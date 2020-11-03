@@ -5,7 +5,6 @@
         <room-list :roomMasts="roomMasts" />
         <app-title value="プラン" />
         <plan-list :planMasts="planMasts" />
-        <iwashi-calendar />
     </div>
 </template>
 
@@ -18,15 +17,13 @@ import { planInteractor, roomInteractor } from "@/abr/index";
 // components
 import PlanList from "@/components/Organisms/Item/Plan/PlanList.vue";
 import RoomList from "@/components/Organisms/Item/Room/RoomList.vue";
-import IwashiCalendar from "@/components/Organisms/Calendar/ReadCalendar.vue";
 import AppTitle from "@/components/Atoms/Text/Title.vue";
 
 @Component({
     components: {
         PlanList,
         RoomList,
-        AppTitle,
-        IwashiCalendar
+        AppTitle
     }
 })
 export default class BookingPage extends Vue {
