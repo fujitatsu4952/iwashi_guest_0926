@@ -4,7 +4,8 @@ import {
     GuestPlanInteractor,
     GuestImageInteractor,
     GuestReservationInteractor,
-    GuestReservationCoordinatorInteractor
+    GuestReservationCoordinatorInteractor,
+    GuestPlanStatusInteractor
 } from 'iwashi_abr_1023/iwashiabr';
 
 export const roomInteractor = new GuestRoomInteractor();
@@ -13,3 +14,4 @@ export const planInteractor = new GuestPlanInteractor();
 export const imageInteractor = new GuestImageInteractor();
 export const reservationInteractor = new GuestReservationInteractor();
 export const coordinator = new GuestReservationCoordinatorInteractor();
+export const planStatusInteractor = new GuestPlanStatusInteractor();

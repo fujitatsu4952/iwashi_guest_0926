@@ -1,10 +1,11 @@
 <template>
-    <div class="container">
+    <div>
         <app-title value="予約のロジックを読み解いていこう！！！！" />
         <div><app-title value="お部屋" /></div>
         <room-list :roomMasts="roomMasts" />
         <app-title value="プラン" />
         <plan-list :planMasts="planMasts" />
+        <get-reservation />
     </div>
 </template>
 
@@ -17,13 +18,17 @@ import { planInteractor, roomInteractor } from "@/abr/index";
 // components
 import PlanList from "@/components/Organisms/Item/Plan/PlanList.vue";
 import RoomList from "@/components/Organisms/Item/Room/RoomList.vue";
+import GetReservation from "@/components/Organisms/Item/GetReservation.vue";
 import AppTitle from "@/components/Atoms/Text/Title.vue";
+import AppButton from "@/components/Atoms/Button/LargeButton.vue";
 
 @Component({
     components: {
         PlanList,
         RoomList,
-        AppTitle
+        GetReservation,
+        AppTitle,
+        AppButton
     }
 })
 export default class BookingPage extends Vue {
