@@ -33,44 +33,10 @@ interface reservationPlanItemTemp {
     }
 })
 export default class BookingPage extends BookingPageMixin {
-    public planStatusList: PlanStatus[] = [];
-    public get dateMinutes(): Scalars["AWSDate"][] | undefined {
-        if (this.reservationObjectNow) {
-            return getTimeRangeArray(
-                this.reservationObjectNow.checkInTime,
-                this.reservationObjectNow.checkOutTime
-            );
-        }
-    }
-
     public async register() {
         if (this.reservationObjectNow) {
-            await this.stockUpdate();
             console.log(this.reservationObjectNow);
             await reservationInteractor.addMast(this.reservationObjectNow);
-        }
-    }
-
-    public stockUpdate() {
-        if (this.reservationObjectNow && this.dateMinutes) {
-            const reservationPlan = JSON.parse(
-                this.reservationObjectNow.planID
-            ) as reservationPlanItemTemp[];
-            for (let i = 0; i < this.dateMinutes.length; i++) {
-                for (let m = 0; m < reservationPlan.length; m++) {
-                    console.log(m);
-                    let planStatus: PlanStatus = {
-                        planID: reservationPlan[m].planID,
-                        Time: this.dateMinutes[i],
-                        soldNum: reservationPlan[m].planNum,
-                        availableNum: null,
-                        isAvailabe: null
-                    };
-                    this.planStatusList.push(planStatus);
-                }
-            }
-            console.log(this.planStatusList);
-            planStatusInteractor.updateStatus(this.planStatusList);
         }
     }
 }

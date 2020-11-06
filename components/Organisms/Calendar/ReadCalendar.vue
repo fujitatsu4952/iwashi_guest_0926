@@ -23,12 +23,10 @@ import WeekDays from "./Parts/weekDays.vue";
 })
 export default class ReadCalendar extends BookingPageMixin {
     public async selectMinutes(minutes: Scalars["AWSDate"]) {
-        console.log(minutes);
         let reservationEndAt = dayjs(minutes)
             .add(2, "hour")
             .format("YYYY-MM-DD-HH:mm");
         let reservationTime = getTimeRangeArray(minutes, reservationEndAt);
-        console.log(reservationTime);
         if (this.reservationObjectNow) {
             const reservationObjectTemp: ReservationObject = {
                 ...this.reservationObjectNow,

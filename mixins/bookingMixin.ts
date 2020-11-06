@@ -30,7 +30,5 @@ export class BookingPageMixin extends Vue {
     // ================= private =================
     public async statusChanger() {
         await reservationStore.statusSetter(this.coordinator);
-        console.log("storeで管理されているやつ↓")
-        console.log(this.reservationObjectNow)
     }
 }

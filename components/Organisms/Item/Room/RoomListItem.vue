@@ -64,6 +64,7 @@ export default class RoomListItem extends Vue {
             );
         }
     }
+
     @Emit("getRoom") public getRoom(
         reservationRoomItemTemp: reservationRoomItemTemp
     ) {}
