@@ -29,6 +29,6 @@ export default class ReservationPage extends Vue {
 </script>
 <style scoped lang="stylus">
 .reservation {
-
+    border: 1px
 }
 </style>
