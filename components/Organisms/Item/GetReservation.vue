@@ -27,6 +27,7 @@ interface reservationPlanItemTemp {
     planID: string;
     planNum: number;
 }
+
 @Component({
     components: {
         AppButton
@@ -37,6 +38,12 @@ export default class BookingPage extends BookingPageMixin {
         if (this.reservationObjectNow) {
             console.log(this.reservationObjectNow);
             await reservationInteractor.addMast(this.reservationObjectNow);
+            this.$router.push({
+                name: "booking-reservationID",
+                params: {
+                    reservationID: this.reservationObjectNow.reservationID
+                }
+            });
         }
     }
 }

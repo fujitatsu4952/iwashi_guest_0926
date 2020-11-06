@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="each_week">
         <div @click="beforeWeek">←</div>
         <div v-if="weekDates" class="week_days_container">
-            <div v-for="date in weekDates" :key="date">
+            <div class="week_days" v-for="date in weekDates" :key="date">
                 <each-date
                     :date="date"
                     @selectMinutes="selectMinutes"
@@ -30,7 +30,7 @@ import EachDate from "./EachDay.vue";
         EachDate
     }
 })
-export default class weekDays extends Vue {
+export default class eachWeekDays extends Vue {
     public startDate: Scalars["AWSDate"] | null = null;
     public weekDates: Scalars["AWSDate"][] | null = null;
     public selectedMinutes: Scalars["AWSDate"][] = [];
@@ -76,7 +76,7 @@ export default class weekDays extends Vue {
     }
     @Emit("selectMinutes") public selectMinutes(minutes: Scalars["AWSDate"]) {
         let reservationEndAt = dayjs(minutes)
-            .add(2, "hour")
+            .add(1.5, "hour")
             .format("YYYY-MM-DD-HH:mm");
         this.selectedMinutes = getTimeRangeArray(minutes, reservationEndAt);
     }
@@ -84,7 +84,16 @@ export default class weekDays extends Vue {
 </script>
 
 <style lang="stylus" scopend>
-.week_days_container {
-    display: flex;
+.each_week {
+    display: flex
+    justify-content: space-evenly
+
+    .week_days_container {
+        display: flex;
+        .week_days {
+            margin: 0 5px;
+            border: 1px solid $boundaryBlack
+        }
+    }
 }
 </style>

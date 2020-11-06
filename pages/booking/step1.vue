@@ -1,8 +1,14 @@
 <template>
-    <div class="container">
-        <app-title value="予約のロジックを読み解いていこう！！！！" />
-        <iwashi-calendar />
-        <app-button statement="ステップ2にいく" @click="goStep2()" />
+    <div class="step1">
+        <div class="step1_container">
+            <div class="step1_title">
+                <app-title value="日時を選択してね！！！！" />
+            </div>
+            <iwashi-calendar />
+            <div class="step1_button_container">
+                <app-button statement="ステップ2にいく" @click="goStep2()" />
+            </div>
+        </div>
     </div>
 </template>
 
@@ -30,4 +36,21 @@ export default class BookingPage extends Vue {
     }
 }
 </script>
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+.step1 {
+    width:100%;
+    height: 100%;
+    .step1_container {
+        border: 1px solid $iwashiMain
+        margin: 30px;
+        .step1_title {
+            margin: 10px 0;
+            text-align: center;
+        }
+        .step1_button_container {
+            text-align: center;
+            margin: 5px
+        }
+    }
+}
+</style>

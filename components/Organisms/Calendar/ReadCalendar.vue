@@ -14,7 +14,7 @@ import { coordinator } from "@/abr/index";
 // mixin
 import { BookingPageMixin } from "@/mixins/bookingMixin";
 // Component
-import WeekDays from "./Parts/weekDays.vue";
+import WeekDays from "./Parts/EachWeek.vue";
 
 @Component({
     components: {
@@ -24,7 +24,7 @@ import WeekDays from "./Parts/weekDays.vue";
 export default class ReadCalendar extends BookingPageMixin {
     public async selectMinutes(minutes: Scalars["AWSDate"]) {
         let reservationEndAt = dayjs(minutes)
-            .add(2, "hour")
+            .add(1.5, "hour")
             .format("YYYY-MM-DD-HH:mm");
         let reservationTime = getTimeRangeArray(minutes, reservationEndAt);
         if (this.reservationObjectNow) {

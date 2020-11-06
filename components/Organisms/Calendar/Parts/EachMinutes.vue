@@ -1,7 +1,9 @@
 <template>
-    <div @click="selectMinutes(minutes)">
-        <div>{{ minutes }}</div>
-        <div v-if="onTime">●</div>
+    <div @click="selectMinutes(minutes)" class="each_minute">
+        <div :class="onTime ? 'each_minute_selected' : ''">
+            {{ minutes.split("-").pop() }}
+        </div>
+        <div class="each_minute_selected_sign" v-if="onTime">○</div>
     </div>
 </template>
 <script lang="ts">
@@ -31,4 +33,16 @@ export default class EachMinutes extends Vue {
 }
 </script>
 
-<style lang="stylus" scopend></style>
+<style lang="stylus" scopend>
+.each_minute {
+    display: flex;
+    .each_minute_selected {
+        font-weight: bold
+        background: #3F8FB4
+    }
+    .each_minute_selected_sign {
+        background: #3F8FB4
+        padding: 0 0 0px 10px;
+    }
+}
+</style>

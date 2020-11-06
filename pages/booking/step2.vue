@@ -1,11 +1,17 @@
 <template>
-    <div>
-        <app-title value="予約のロジックを読み解いていこう！！！！" />
-        <div><app-title value="お部屋" /></div>
-        <room-list :roomMasts="roomMasts" />
-        <app-title value="プラン" />
-        <plan-list :planMasts="planMasts" />
-        <get-reservation />
+    <div class="step2">
+        <div class="step2_container">
+            <div class="step2_title">
+                <app-title value="コンテンツを決めよう！！！！！！" />
+            </div>
+            <div><app-title value="お部屋" /></div>
+            <room-list :roomMasts="roomMasts" />
+            <app-title value="プラン" />
+            <plan-list :planMasts="planMasts" />
+            <div class="step2_button_container">
+                <get-reservation />
+            </div>
+        </div>
     </div>
 </template>
 
@@ -47,4 +53,21 @@ export default class BookingPage extends BookingPageMixin {
     }
 }
 </script>
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+.step2 {
+    width:100%;
+    height: 100%;
+    .step2_container {
+        border: 1px solid $iwashiMain
+        margin: 30px;
+        .step2_title {
+            margin: 10px 0;
+            text-align: center;
+        }
+        .step2_button_container {
+            text-align: center;
+            margin: 5px
+        }
+    }
+}
+</style>

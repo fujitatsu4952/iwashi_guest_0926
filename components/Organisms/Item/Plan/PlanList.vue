@@ -1,6 +1,10 @@
 <template>
-    <div v-if="planMasts">
-        <div v-for="planMast in planMasts" :key="planMast.planID">
+    <div class="plan_list" v-if="planMasts">
+        <div
+            class="plan_list_item_container"
+            v-for="planMast in planMasts"
+            :key="planMast.planID"
+        >
             <plan-list-item :planMast="planMast" @getPlan="getPlan" />
         </div>
     </div>
@@ -55,4 +59,13 @@ export default class PlanList extends BookingPageMixin {
     }
 }
 </script>
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+.plan_list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap
+    .plan_list_item_container {
+        margin: 10px 0;
+    }
+}
+</style>

@@ -1,18 +1,24 @@
 <template>
-    <div>
-        <span>{{ planMast.planID }}</span>
-        <span>NAME:{{ planMast.name }}</span>
-        <span>説明:{{ planMast.description }}</span>
-        <span>注意書き:{{ planMast.subDescription }}</span>
-        <span>値段:{{ planMast.price }}</span>
-        <span>在庫数:{{ planMast.stockNum }}</span>
-        <span>残在庫数:{{ planStockNum }}</span>
+    <div class="plan_list_item">
+        <app-sub-title :value="planMast.name" bold />
+
+        <app-text :value="planMast.description" />
+        <app-caption :value="planMast.subDescription" />
+        <app-text bold :value="`¥${planMast.price}`" />
+
+        <div>在庫数:{{ planMast.stockNum }}</div>
+        <div>残在庫数:{{ planStockNum }}</div>
         <div v-if="reservationPlanItemTemp">
-            <input
-                @change="getPlan(reservationPlanItemTemp)"
-                type="number"
-                v-model.number="reservationPlanItemTemp.planNum"
-            />
+            <template v-if="planStockNum > 0">
+                <input
+                    @change="getPlan(reservationPlanItemTemp)"
+                    type="number"
+                    v-model.number="reservationPlanItemTemp.planNum"
+                    :max="planStockNum"
+                    min="0"
+                    class="plan_num_input"
+                />
+            </template>
         </div>
     </div>
 </template>
@@ -29,13 +35,20 @@ import {
 import { BookingPageMixin } from "@/mixins/bookingMixin";
 import { coordinator, planStatusInteractor } from "@/abr/index";
 import { reservationStore } from "@/store";
+import AppSubTitle from "@/components/Atoms/Text/TitleSub.vue";
+import AppText from "@/components/Atoms/Text/Text.vue";
+import AppCaption from "@/components/Atoms/Text/Caption.vue";
 
 interface reservationPlanItemTemp {
     planID: string;
     planNum: number;
 }
 @Component({
-    components: {}
+    components: {
+        AppSubTitle,
+        AppText,
+        AppCaption
+    }
 })
 export default class PlanListItem extends Vue {
     public planStockNum: number | null = null;
@@ -73,4 +86,18 @@ export default class PlanListItem extends Vue {
     ) {}
 }
 </script>
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+.plan_list_item {
+    min-width: 300px;
+    border: 1px solid $iwashiMain
+    .plan_num_input {
+        background-color: rgba(63,143,180,0.2);
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+}
+</style>

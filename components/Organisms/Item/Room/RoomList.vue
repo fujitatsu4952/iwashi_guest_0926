@@ -1,6 +1,10 @@
 <template>
-    <div v-if="roomMasts">
-        <div v-for="roomMast in roomMasts" :key="roomMast.roomID">
+    <div class="room_list" v-if="roomMasts">
+        <div
+            class="room_list_item_container"
+            v-for="roomMast in roomMasts"
+            :key="roomMast.roomID"
+        >
             <room-list-item :roomMast="roomMast" @getRoom="getRoom" />
         </div>
     </div>
@@ -55,4 +59,13 @@ export default class RoomList extends BookingPageMixin {
     }
 }
 </script>
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+.room_list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap
+    .room_list_item_container {
+        margin: 10px 0;
+    }
+}
+</style>

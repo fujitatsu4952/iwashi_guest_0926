@@ -1,6 +1,14 @@
 <template>
-    <div>
-        <div>{{ dayOfWeek }}</div>
+    <div class="each_day">
+        <div class="each_day_date">
+            {{
+                date
+                    .split("-")
+                    .splice(1, 2)
+                    .join("/")
+            }}
+        </div>
+        <div class="each_day_of_week">{{ dayOfWeek }}</div>
         <div v-for="minute in dateMinutes" :key="minute">
             <each-minutes
                 :minutes="minute"
@@ -47,4 +55,15 @@ export default class weekDays extends Vue {
 }
 </script>
 
-<style lang="stylus" scopend></style>
+<style lang="stylus" scopend>
+.each_day {
+    width: 80px;
+    cursor: pointer;
+    .each_day_date {
+        text-align: center;
+    }
+    .each_day_of_week {
+        text-align: center;
+    }
+}
+</style>

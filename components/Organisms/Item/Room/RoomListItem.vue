@@ -1,18 +1,22 @@
 <template>
-    <div>
-        <span>{{ roomMast.roomID }}</span>
-        <span>NAME:{{ roomMast.name }}</span>
-        <span>説明:{{ roomMast.description }}</span>
-        <span>注意書き:{{ roomMast.subDescription }}</span>
-        <span>最低オーダー数:{{ roomMast.minOrderNum }}</span>
+    <div class="room_list_item">
+        <app-sub-title :value="roomMast.name" bold />
+        <app-text :value="roomMast.description" />
+        <app-caption :value="roomMast.subDescription" />
+        <app-text bold :value="`min${roomMast.minOrderNum}`" />
         <span>在庫数:{{ roomMast.stockNum }}</span>
         <span>残在庫数:{{ roomStockNum }}</span>
         <div v-if="reservationRoomItemTemp">
-            <input
-                @change="getRoom(reservationRoomItemTemp)"
-                type="number"
-                v-model.number="reservationRoomItemTemp.roomNum"
-            />
+            <template v-if="roomStockNum > 0">
+                <input
+                    @change="getRoom(reservationRoomItemTemp)"
+                    type="number"
+                    v-model.number="reservationRoomItemTemp.roomNum"
+                    :max="roomStockNum"
+                    min="0"
+                    class="room_num_input"
+                />
+            </template>
         </div>
     </div>
 </template>
@@ -26,13 +30,20 @@ import {
 } from "iwashi_abr_1023/iwashiabr";
 import { coordinator, roomStatusInteractor } from "@/abr/index";
 import { reservationStore } from "@/store";
+import AppSubTitle from "@/components/Atoms/Text/TitleSub.vue";
+import AppText from "@/components/Atoms/Text/Text.vue";
+import AppCaption from "@/components/Atoms/Text/Caption.vue";
 
 interface reservationRoomItemTemp {
     roomID: string;
     roomNum: number;
 }
 @Component({
-    components: {}
+    components: {
+        AppSubTitle,
+        AppText,
+        AppCaption
+    }
 })
 export default class RoomListItem extends Vue {
     public roomStockNum: number | null = null;
@@ -70,4 +81,18 @@ export default class RoomListItem extends Vue {
     ) {}
 }
 </script>
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+.room_list_item {
+    min-width: 300px;
+    border: 1px solid $iwashiMain
+    .room_num_input {
+        background-color: rgba(63,143,180,0.2);
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+}
+</style>
