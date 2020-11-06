@@ -46,6 +46,6 @@
     "gulp-cloudfront-invalidate-aws-publish": "^1.0.0",
     "stylus": "^0.54.8",
     "stylus-loader": "3.0.2",
-    "ts-loader": "^8.0.3"
+    "ts-loader": "^8.0.8"
   }
 }

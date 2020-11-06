@@ -34,12 +34,8 @@ export default class BookingPage extends Vue {
     public roomMasts: RoomMast[] | null | undefined = null;
 
     public async created() {
-        this.planMasts = (
-            await planInteractor.fetchPlanMasts(undefined)
-        ).data?.fetchPlanMasts;
-        this.roomMasts = (
-            await roomInteractor.fetchRoomMasts(undefined)
-        ).data?.fetchRoomMasts;
+        this.planMasts = await planInteractor.fetchPlanMasts(undefined);
+        this.roomMasts = await roomInteractor.fetchRoomMasts(undefined);
     }
 }
 </script>

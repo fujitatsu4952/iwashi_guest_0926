@@ -6942,7 +6942,7 @@ iterall@^1.2.1:
 
 "iwashi_abr_1023@git+ssh://git@github.com:fujitatsu4952/iwashi_abr_1023.git":
   version "0.0.0"
-  resolved "git+ssh://git@github.com:fujitatsu4952/iwashi_abr_1023.git#7ef7b8a99b0a6cf122a1ac7f7bb6ff973d589812"
+  resolved "git+ssh://git@github.com:fujitatsu4952/iwashi_abr_1023.git#590fcc15bfed66143899c712e2ae784aaac94738"
 
 jest-worker@^25.4.0:
   version "25.5.0"
@@ -10979,6 +10979,17 @@ ts-loader@^8.0.3:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-8.0.3.tgz#56858f4296edf1ed55e01f8520552984d3f0911c"
   integrity sha512-wsqfnVdB7xQiqhqbz2ZPLGHLPZbHVV5Qn/MNFZkCFxRU1miDyxKORucDGxKtsQJ63Rfza0udiUxWF5nHY6bpdQ==
+  dependencies:
+    chalk "^2.3.0"
+    enhanced-resolve "^4.0.0"
+    loader-utils "^1.0.2"
+    micromatch "^4.0.0"
+    semver "^6.0.0"
+
+ts-loader@^8.0.8:
+  version "8.0.8"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-8.0.8.tgz#5c514c895d3b2462bf0148f63da0c22b227f7867"
+  integrity sha512-wihija1i2Ub9FxKFoEgx/phToJiDZKLIbTFURgf4Efxla2QuVucDO6ZpHf2jNJsRtDQfBId0g+1HF0biIjoT6Q==
   dependencies:
     chalk "^2.3.0"
     enhanced-resolve "^4.0.0"
