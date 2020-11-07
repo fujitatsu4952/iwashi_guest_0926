@@ -28,14 +28,14 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: `/favicon.ico`,
-      },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/earlyaccess/notosansjp.css' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900&display=swap' },
-    ],
+    // link: [{
+    //   rel: 'icon',
+    //   type: 'image/x-icon',
+    //   href: `/favicon.ico`,
+    //   },
+    //   { rel: 'stylesheet', href: 'https://fonts.googleapis.com/earlyaccess/notosansjp.css' },
+    //   { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900&display=swap' },
+    // ],
   },
   /*
    ** Global CSS
